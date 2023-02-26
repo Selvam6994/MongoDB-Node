@@ -34,12 +34,12 @@ const movies = await client
     response.send(result);
   });
   
-  router.delete("/:id", async function (request, response) {
+  router.delete("/:_id", async function (request, response) {
     const { id } = request.params;
     const result = await client
       .db("mongodb")
       .collection("movies")
-      .deleteMany({ id: id });
+      .deleteMany({ _id: id });
     result.deletedCount >= 1
       ? response.send({ message: "Deleted Successfully" })
       : response.status(404).send("no match found");
