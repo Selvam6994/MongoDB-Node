@@ -10,7 +10,7 @@ const fs = require('fs');
 const quote2 = "Live more,worry less";
 const [ , ,files]= process.argv
 for(let i=1;i<=files;i++){
-    fs.writeFile(`backUp/test${i}.html`,quote2,(msg)=>{
+    fs.writeFile(`Files/test${i}.html`,quote2,(msg)=>{
         console.log("files created");
     })
 }

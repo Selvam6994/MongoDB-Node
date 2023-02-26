@@ -5,7 +5,7 @@ const  router = express.Router();
   
   router.get("/", async function (request, response) {
 
-    const movies = await client
+const movies = await client
       .db("mongodb")
       .collection("movies")
       .find({})
@@ -30,7 +30,7 @@ const  router = express.Router();
     const result = await client
       .db("mongodb")
       .collection("movies")
-      .insertMany(data);
+      .insertOne(data);
     response.send(result);
   });
   
