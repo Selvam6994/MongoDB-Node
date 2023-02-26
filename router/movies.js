@@ -13,12 +13,12 @@ const movies = await client
     response.send(movies);
   });
   //Mock api
-  router.get("/:id", async function (request, response) {
+  router.get("/:_id", async function (request, response) {
     const { id } = request.params;
     const movie = await client
       .db("mongodb")
       .collection("movies")
-      .findOne({ id: id });
+      .findOne({ _id: id });
     // response.send(movie);
     movie ? response.send(movie) : response.status(404).send("no match found");
   });
@@ -34,24 +34,24 @@ const movies = await client
     response.send(result);
   });
   
-  router.delete("/:id", async function (request, response) {
+  router.delete("/:_id", async function (request, response) {
     const { id } = request.params;
     const result = await client
       .db("mongodb")
       .collection("movies")
-      .deleteMany({ id: id });
+      .deleteMany({ _id: id });
     result.deletedCount >= 1
       ? response.send({ message: "Deleted Successfully" })
       : response.status(404).send("no match found");
   });
   
-  router.put("/:id", async function (request, response) {
+  router.put("/:_id", async function (request, response) {
     const { id } = request.params;
     const data = request.body;
     const update_result = await client
       .db("mongodb")
       .collection("movies")
-      .updateOne({ id: id }, { $set: data });
+      .updateOne({ _id: id }, { $set: data });
     // response.send(movie);
     update_result
       ? response.send(update_result)
